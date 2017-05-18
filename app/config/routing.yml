@@ -1,0 +1,22 @@
+ens_jobeet:
+    resource: "@EnsJobeetBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ens_job_homepage:
+    path:     /
+    defaults: { _controller: EnsJobeetBundle:Job:index }
+    
+
+app:
+  resource: '@AppBundle/Controller/'
+  type: annotation
+  
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+ 
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

@@ -1,0 +1,49 @@
+<?php
+
+namespace Ens\JobeetBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CategoryAffiliate
+ *
+ * @ORM\Table(name="category_affiliate")
+ * @ORM\Entity(repositoryClass="Ens\JobeetBundle\Repository\CategoryAffiliateRepository")
+ */
+class CategoryAffiliate
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var array
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="category_affiliates")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+    
+    /**
+     * @var array
+     *
+     * @ORM\ManyToOne(targetEntity="Affiliate", inversedBy="category_affiliates")
+     * @ORM\JoinColumn(name="affiliate_id", referencedColumnName="id")
+     */
+    private $affiliate;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

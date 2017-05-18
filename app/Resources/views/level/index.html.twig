@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Levels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for level in levels %}
+            <tr>
+                <td><a href="{{ path('ens_level_show', { 'id': level.id }) }}">{{ level.id }}</a></td>
+                <td>{{ level.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ens_level_show', { 'id': level.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ens_level_edit', { 'id': level.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ens_level_new') }}">Create a new level</a>
+        </li>
+    </ul>
+{% endblock %}
